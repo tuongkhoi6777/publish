@@ -22,15 +22,6 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
 }
-input
-{
-  z-index: 0;
-}
-canvas
-{
-  z-index: 10;
-}
-
 * {
   font-smooth: nevers;
 }
@@ -76,7 +67,11 @@ body {
 canvas {
   background-color: rgba(0, 0, 0, 0);
 }
-
+input
+{
+  /* width: 0  !important; */
+  height: 0 !important;
+}
 a:link, a:visited {
   color: #666;
 }
