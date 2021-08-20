@@ -42,7 +42,7 @@
     <!--<link rel="apple-touch-icon" href=".png" />-->
     <!--<link rel="apple-touch-icon-precomposed" href=".png" />-->
 
-    <link rel="stylesheet" type="text/css" href="style-mobile.8a17f.css" />
+    <link rel="stylesheet" type="text/css" href="style-mobile.47725.css" />
     <link rel="icon" href="_SnowIcon.83478.ico" />
 
     <!-- <script>
@@ -78,9 +78,9 @@
       oncontextmenu="event.preventDefault()"
     ></canvas>
 
-    <script src="src/settings.34c14.js" charset="utf-8"></script>
+    <script src="src/settings.bd7a6.js" charset="utf-8"></script>
 
-    <script src="main.a0f48.js" charset="utf-8"></script>
+    <script src="main.19103.js" charset="utf-8"></script>
 
     <script type="text/javascript">
       (function () {
@@ -148,16 +148,16 @@
       var splash = document.getElementById("splash");
       var progressBar = splash.querySelector(".progress-bar span");
 
-      var loadingDefines = {
-        frameTime: 1 / 60,
-        imgs: {
-          santa_0: { dir: "Untitled_0.png", obj: new Image(), loaded: false },
-          santa_1: { dir: "Untitled_1.png", obj: new Image(), loaded: false },
-          santa_2: { dir: "Untitled_2.png", obj: new Image(), loaded: false },
-          santa_3: { dir: "Untitled_3.png", obj: new Image(), loaded: false },
-          santa_4: { dir: "Untitled_4.png", obj: new Image(), loaded: false },
-        },
-      };
+      // var loadingDefines = {
+      //   frameTime: 1 / 60,
+      //   imgs: {
+      //     santa_0: { dir: "Untitled_0.png", obj: new Image(), loaded: false },
+      //     santa_1: { dir: "Untitled_1.png", obj: new Image(), loaded: false },
+      //     santa_2: { dir: "Untitled_2.png", obj: new Image(), loaded: false },
+      //     santa_3: { dir: "Untitled_3.png", obj: new Image(), loaded: false },
+      //     santa_4: { dir: "Untitled_4.png", obj: new Image(), loaded: false },
+      //   },
+      // };
 
       var cleanUpLoading = function () {
         document.body.removeChild(loadingCanvas);
@@ -165,7 +165,7 @@
         myRequestAnimId = null;
         myOffsetX = null;
         loadingCanvas = null;
-        loadingDefines = null;
+        // loadingDefines = null;
         cleanUpLoading = null;
       };
 
@@ -175,68 +175,68 @@
         var start = Date.now();
         var mySpan = progressBar;
 
-        function loadImage(onComplete) {
-          var total = 0;
-          var count = 0;
-          var successCount = 0;
-          for (var key in loadingDefines.imgs) {
-            var image = loadingDefines.imgs[key];
-            if (!image.loaded) {
-              total++;
-              image.obj.src = "imgs/" + image.dir;
-              image.obj.onload = function () {
-                count++;
-                successCount++;
-                if (count == total) {
-                  onComplete(successCount == total);
-                }
-              };
+        // function loadImage(onComplete) {
+        //   var total = 0;
+        //   var count = 0;
+        //   var successCount = 0;
+        //   for (var key in loadingDefines.imgs) {
+        //     var image = loadingDefines.imgs[key];
+        //     if (!image.loaded) {
+        //       total++;
+        //       image.obj.src = "imgs/" + image.dir;
+        //       image.obj.onload = function () {
+        //         count++;
+        //         successCount++;
+        //         if (count == total) {
+        //           onComplete(successCount == total);
+        //         }
+        //       };
 
-              image.obj.onerror = function () {
-                count++;
-                if (count == total) {
-                  onComplete(successCount == total);
-                }
-              };
-            }
-          }
-        }
+        //       image.obj.onerror = function () {
+        //         count++;
+        //         if (count == total) {
+        //           onComplete(successCount == total);
+        //         }
+        //       };
+        //     }
+        //   }
+        // }
 
-        function animateLoading() {
-          var santa = new animation(
-            [
-              loadingDefines.imgs.santa_0.obj,
-              loadingDefines.imgs.santa_1.obj,
-              loadingDefines.imgs.santa_2.obj,
-              loadingDefines.imgs.santa_3.obj,
-              loadingDefines.imgs.santa_4.obj,
-            ],
-            8,
-            1
-          );
+        // function animateLoading() {
+        //   var santa = new animation(
+        //     [
+        //       loadingDefines.imgs.santa_0.obj,
+        //       loadingDefines.imgs.santa_1.obj,
+        //       loadingDefines.imgs.santa_2.obj,
+        //       loadingDefines.imgs.santa_3.obj,
+        //       loadingDefines.imgs.santa_4.obj,
+        //     ],
+        //     8,
+        //     1
+        //   );
 
-          function loop() {
-            var current = Date.now();
-            var dt = (current - start) / 1000;
-            start = current;
+        //   function loop() {
+        //     var current = Date.now();
+        //     var dt = (current - start) / 1000;
+        //     start = current;
 
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        //     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            santa.update(dt);
-            santa.render(ctx);
+        //     santa.update(dt);
+        //     santa.render(ctx);
 
-            var totalPercent = mySpan.style.width.slice(0, -1);
-            if (totalPercent >= 0) {
-              santa.setPos(((posEndX - posStartX) * current) / 100, posY);
-            }
+        //     var totalPercent = mySpan.style.width.slice(0, -1);
+        //     if (totalPercent >= 0) {
+        //       santa.setPos(((posEndX - posStartX) * current) / 100, posY);
+        //     }
 
-            santa.setPos(canvas.width*50/100 - santaWidth/2, canvas.height*30/100);
+        //     santa.setPos(canvas.width*50/100 - santaWidth/2, canvas.height*30/100);
 
-            myRequestAnimId = window.requestAnimationFrame(loop);
-          }
+        //     myRequestAnimId = window.requestAnimationFrame(loop);
+        //   }
 
-          myRequestAnimId = window.requestAnimationFrame(loop);
-        }
+        //   myRequestAnimId = window.requestAnimationFrame(loop);
+        // }
 
         function animation(imgs, eachFrameCount, scale) {
           this.x = 0;
@@ -244,7 +244,7 @@
           this.rotate = 0;
           this.frameIndex = 0;
           this.time = 0;
-          this.timePerFrame = loadingDefines.frameTime * eachFrameCount;
+          // this.timePerFrame = loadingDefines.frameTime * eachFrameCount;
 
           this.setPos = function (x, y) {
             this.x = x;
