@@ -48,7 +48,8 @@
     <script>
       window.DEBUG_API=true;
       window.service_host = "wss://mytelpay.elofun.net";
-      window.token = "93a0cecbd0cecfceced0d5d3d3d4a1b2f709181ac7f4180b0fcc130f181c161615b3fd70b7ba1e28bb20bd16210631f317f629f92136133b1efd231322270a1c26283d1b3a2f2f4a2a314d264136274c383b513338542b374e4151605322435c4c4c5d504d663b474d4457314d6d65705a4b5e395a3b63645e7a5b5c645780456a7b52531724668468506a9878536e9960613c.580d5cf477a0612984852d75d93eb345c4998f387c604feb0329aacfe55bbf75b74a60afb26f1350e1220550fd7013b01f315da8dbd3821294ea15afa328f181";
+      const urlParams = new URLSearchParams(window.location.search);
+      window.token = urlParams.get('token');
     </script>
 
     <script src="https://mytelpay.elofun.net/services/gateway.js"></script>
